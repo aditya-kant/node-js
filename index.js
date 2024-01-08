@@ -1,4 +1,4 @@
-const app=require('./app')
+//const app=require('./app')
 // console.log(app.y())
 // console.log(app.x);
 // const fs=require("fs")
@@ -13,13 +13,23 @@ const app=require('./app')
 // resp.write("<h1>Hello,this is response from local host 4500<h1>");
 // resp.end();
 // }).listen(4500)
-str="<h1>Hello,this is response from function at local host 4500<h1>"
-const basicServer=(req,resp)=>{
-    resp.write(str);
-    resp.end();
-    }
-const http=require("http")
-http.createServer(basicServer).listen(4500)
+// str="<h1>Hello,this is second response from function at local host 4500<h1>"
+// const basicServer=(req,resp)=>{
+//     resp.write(str);
+//     resp.end();
+//     }
+// const http=require("http")
+// http.createServer(basicServer).listen(4500)
 
-const color = require("colors")
-console.log("hello".red);
+// const color = require("colors")
+// console.log("hello".red);
+
+//BASIC API
+
+const data= require('./data');
+const http = require("http");
+http.createServer((req,res)=>{
+    res.writeHead(200,{"Content-Type":'application\json'})
+    res.write(JSON.stringify(data));
+    res.end();
+}).listen(5600);
